@@ -17,12 +17,6 @@ $ex = $_REQUEST['errormessage'];
     <title>
         Personnel List
     </title>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet' />
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Gochi Hand' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Vibur' rel='stylesheet'>
     <link href="css/css.css" type="text/css" rel="stylesheet" />
@@ -56,11 +50,11 @@ $ex = $_REQUEST['errormessage'];
                 <thead>
                     <tr>
                         <th class="customStyle invisibleColumn">Login_Id</th>    
-                        <th class="customStyle ">Name</th>
+                        <th class="customStyle">Name</th>
                         <th class="customStyle">Last Name</th>
                         <th class="customStyle">Out / In</th>
                         <th class="customStyle">location_Id</th>
-                        <th class="customStyle">location</th>
+                        <th class="customStyle">Location</th>
                         <th class="customStyle">Other</th>
                         <th class="customStyle">Return</th>
                         <th class="customStyle">Details</th>

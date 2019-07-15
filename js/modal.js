@@ -6,18 +6,25 @@ class Modal {
     };
 
     show(callback) {
-        this.elem.style.display = "block";
+        //this.elem.style.opacity = 1;
+        this.elem.classList.remove('slit-out');
+        this.elem.classList.add('slit-in');
+        //this.elem.style.display = "block";
         if (callback) callback();
     };
 
     hide(callback) {
-        this.elem.style.display = "none";
+        this.elem.classList.remove('slit-in');
+        this.elem.classList.add('slit-out');
+        //this.elem.style.display = "none";
         this.createCloseEvent();
         if (callback) callback();
     };
 
     createCloseEvent() {
         let event = new Event('AzrModalClose');
+        this.elem.classList.remove('slit-in');
+       // this.elem.classList.remove('slit-out');
         document.dispatchEvent(event);
     }
 

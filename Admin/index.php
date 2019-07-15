@@ -47,13 +47,7 @@ if (isset($_POST['username']) && isset($_POST['pwd'])){
 <html>
 <head>
 	<title>Sign In</title>
-<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet' />
-<!--	<link href="css/project1.css" type="text/css" rel="stylesheet" />
-	<link href="css/forms.css" type="text/css" rel="stylesheet" />-->
 </head>
 <body>
 	<div class="container masthead">

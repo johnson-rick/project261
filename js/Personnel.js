@@ -9,6 +9,9 @@
     const modalClose = document.getElementById("modalClose");
     const modalReturnTime = document.getElementById("modalReturnTime");
     const modalDetails = document.getElementById("modalDetails");
+    const ddlStyle = document.getElementById('ddlStyle');
+
+    var style = getItemFromStorage('Style');
 
     class Person {
         constructor(login_id, full_name, status, location_id, other, _return, details) {
@@ -30,7 +33,7 @@
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-               var results = JSON.parse(xhr.responseText);
+                var results = JSON.parse(xhr.responseText);
                 callback(results);
             }
         }
@@ -43,6 +46,11 @@
         //var count = results.totalItems;
         CreateTable(results);
         addListeners();
+
+        if (style != null || style != undefined) {
+            changeStyle(style);
+            ddlStyle.value = style;
+        }
     }
 
     function getLocations() {
@@ -84,12 +92,10 @@
     }
 
     function callback3(results) {
-        //var count = results.totalItems;
-        //if (results > 0)
-        //{
+        if (results > 0)
+        {
             modal1.hide();
-            //location.reload();
-        //}
+        }
     }
 
     getPersonnel();
@@ -124,7 +130,7 @@
             newRow.first_name = dataitems[i][1];
             newRow.last_name = dataitems[i][2];
             newRow.status = dataitems[i][3];
-            newRow.location_Id = dataitems[i][4]; 
+            newRow.location_Id = dataitems[i][4];
             newRow.location = dataitems[i][5];
             newRow.other = dataitems[i][6];
             newRow._return = dataitems[i][7];
@@ -143,19 +149,19 @@
                     else {
                         cell.innerHTML = "<label class='switch'><input type='checkbox' class='check' id='check" + i + "'><span class='customStyle slider round'></span></label>";
                     }
-                    
+
                 }
                 else {
                     cell.innerHTML = dataitems[i][j];
                 }
-               cell.className = " center customStyle";
-           
+                cell.className = " center customStyle";
+
                 if (j == 0) {
                     cell.className = "invisibleColumn";
                 }
             }
         }
-    }  
+    }
 
     function getValue(itemValue) {
         if (itemValue != null && itemValue != undefined) {
@@ -166,8 +172,7 @@
         }
     }
 
-    function addListeners()
-    {
+    function addListeners() {
         var icons = document.getElementsByClassName("check");
         //console.log(icons);
         //console.log('array length: ' + icons.length);
@@ -193,10 +198,11 @@
 
                     if (self.checked == false) {
                         loadModal(person, row);
-                     }
-                    else
-                    {
+                        row.cells.item(1).classList.add('Out');
+                    }
+                    else {
                         //column updates
+                        row.cells.item(1).classList.remove('Out');
                         row.cells.item(4).innerHTML = '1'; // location_Id
                         row.cells.item(5).innerHTML = 'In the Office'; // location
                         row.cells.item(6).innerHTML = ''; // Other
@@ -209,15 +215,14 @@
                         person._return = '';
                         person.status = true;
                         SavePerson(person);
-                    }                                 
+                    }
                 },
                 false
             )
         };
     }
 
-    function loadModal(person, row)
-    {
+    function loadModal(person, row) {
         modalLogin_Id.value = person.login_id;
         modalStatus.value = person.status;
         modalName.innerHTML = person.full_name;
@@ -226,8 +231,7 @@
         modalReturnTime.value = person._return
         modalDetails.value = person.details;
 
-        if (modalLocation.value == 13)
-        {
+        if (modalLocation.value == 13) {
             modalOtherDiv.classList.remove('hide', 'inline');
             modalOtherDiv.classList.add('unhide', 'inline');
         }
@@ -240,8 +244,7 @@
                     modalOtherDiv.classList.remove('hide', 'inline');
                     modalOtherDiv.classList.add('unhide', 'inline');
                 }
-                else
-                {
+                else {
                     modalOtherDiv.classList.remove('unhide', 'inline');
                     modalOtherDiv.classList.add('hide', 'inline');
                     modalOther.innerHTML = '';
@@ -264,7 +267,7 @@
                 //Save record
                 var loginId = modalLogin_Id.value;
                 var name = modalName.value;
-                var status =  modalStatus.value;
+                var status = modalStatus.value;
                 var locationId = modalLocation.options[modalLocation.selectedIndex].value;
                 var location = modalLocation.options[modalLocation.selectedIndex].text;
                 var other = modalOther.value;
@@ -275,11 +278,13 @@
                 SavePerson(person);
 
                 //column updates
-                row.cells.item(4).innerHTML = locationId;
-                row.cells.item(5).innerHTML = location;
-                row.cells.item(6).innerHTML = other; 
-                row.cells.item(7).innerHTML = _return; 
-                row.cells.item(8).innerHTML = details;                
+                row.cells.item(4).innerHTML = locationId.toString();
+                row.cells.item(5).innerHTML = location.toString();
+                row.cells.item(6).innerHTML = other.toString();
+                row.cells.item(7).innerHTML = _return.toString();
+                row.cells.item(8).innerHTML = details.toString();
+                //clear row
+                row = null;
             },
             false
         );
@@ -304,12 +309,14 @@
 
     function setFocus(ctrl) {
         ctrl.focus();
-    } 
+    }
 
     document.getElementById('ddlStyle').addEventListener(
         'change',
         function () {
             changeStyle(this.value);
+            localStorage.removeItem("Style");
+            setItemInStorage("Style", this.value)
         },
         false
     );
@@ -343,6 +350,19 @@
                     rows[i].classList.remove('styleNeon');
                 }
         }
+    }
+
+    setInterval(function () {
+        window.location.reload();
+    }, 300000);
+
+    function setItemInStorage(dataKey, data) {
+        localStorage.setItem(dataKey, JSON.stringify(data));
+    }
+
+    function getItemFromStorage(dataKey) {
+        var data = localStorage.getItem(dataKey);
+        return data ? JSON.parse(data) : null;
     }
 
 });

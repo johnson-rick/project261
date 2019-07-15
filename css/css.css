@@ -308,14 +308,28 @@ body.styleNeon {
     background-repeat: no-repeat;
     background-color: #141414;
 }
+td {
+    transition: all .7 linear;
+}
 
 td.styleNeon:nth-child(2) {
     font-size: 4rem;
     text-align: center;
-    line-height: 1;
+    line-height: 1.25;
     color: #c6e2ff; 
     -webkit-animation: neon .08s ease-in-out infinite alternate;
     animation: neon .08s ease-in-out infinite alternate;
+}
+.neonIn {
+    color: greenyellow !important;
+}
+.Out {
+    transform: scale(.55);
+    -webkit-transform: scale(.75);
+    color: rgba(126, 141, 156, .7) !important;
+    font-weight: bold;
+    -webkit-animation: none 0 ease !important;
+    animation: none 0 ease !important;
 }
 td.styleNeon:nth-child(n+5) {
     font-size: 2rem;
