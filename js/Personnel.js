@@ -140,7 +140,7 @@
             for (var j = 0; j < dataitems[i].length; j++) {
                 //create a new cell
                 var cell = newRow.insertCell(j);
-                cell.className = 'customStyle';
+                cell.className = 'center customStyle';
                 //add value to the cell
                 if (j == 3) {
                     if (dataitems[i][j] == true) {
@@ -154,7 +154,13 @@
                 else {
                     cell.innerHTML = dataitems[i][j];
                 }
-                cell.className = " center customStyle";
+
+                if (j == 1 && newRow.status == false) {
+                    cell.className += " Out";
+                }
+                //else {
+                //    cell.className = " center customStyle";
+                //}
 
                 if (j == 0) {
                     cell.className = "invisibleColumn";
@@ -232,8 +238,7 @@
         modalDetails.value = person.details;
 
         if (modalLocation.value == 13) {
-            modalOtherDiv.classList.remove('hide', 'inline');
-            modalOtherDiv.classList.add('unhide', 'inline');
+            modalOtherDiv.classList.add('accordion-open');
         }
 
         modalLocation.addEventListener(
@@ -241,12 +246,10 @@
             function () {
                 if (this.value == 13) // Other
                 {
-                    modalOtherDiv.classList.remove('hide', 'inline');
-                    modalOtherDiv.classList.add('unhide', 'inline');
+                    modalOtherDiv.classList.add('accordion-open');
                 }
                 else {
-                    modalOtherDiv.classList.remove('unhide', 'inline');
-                    modalOtherDiv.classList.add('hide', 'inline');
+                    modalOtherDiv.classList.remove('accordion-open', 'inline');
                     modalOther.innerHTML = '';
                     modalOther.value = '';
                 }

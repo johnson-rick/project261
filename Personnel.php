@@ -71,13 +71,12 @@ $ex = $_REQUEST['errormessage'];
                 <input type="hidden" id="modalLocation_Id" name="modalLocation_Id" />
                 <input type="hidden" id="modalStatus" name="modalStatus" />
                 <label for="modalLocation">Location:</label>
-                <select name="modalLocation" id="modalLocation" class="required"></select>
+                <select name="modalLocation" id="modalLocation"></select>
                 <br />
-                <div id="modalOtherDiv" class="inputOther hide">
+                <div id="modalOtherDiv" class="accordion-content">
                     <label for="modalOther">Location Other:</label>
                     <input name="modalOther" id="modalOther" type="text" />
                 </div>
-                <br />
                 <label for="modalReturnTime">Return Time:</label>
                 <input type="time" name="modalReturnTime" id="modalReturnTime" />
                 <br />

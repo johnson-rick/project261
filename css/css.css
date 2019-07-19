@@ -206,9 +206,9 @@ label.styleChalk {
     display:inline-block;
 }
 
-#inputOther {
+/*#inputOther {
     transition: opacity 3s;
-}
+}*/
 
 .right {
     float: right;
@@ -309,7 +309,7 @@ body.styleNeon {
     background-color: #141414;
 }
 td {
-    transition: all .7 linear;
+    transition: all .7s ease-in-out;
 }
 
 td.styleNeon:nth-child(2) {

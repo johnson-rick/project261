@@ -39,11 +39,11 @@ class Modal {
         });
 
         // Also hide modal when you press outside
-        this.elem.addEventListener('click', e => {
-            if(e.target.classList.contains('modal-azr')) {
-                this.hide();
-            }
-        });
+        //this.elem.addEventListener('click', e => {
+        //    if(e.target.classList.contains('modal-azr')) {
+        //        this.hide();
+        //    }
+        //});
     };
 
 }

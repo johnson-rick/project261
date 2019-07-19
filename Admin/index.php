@@ -65,11 +65,11 @@ if (isset($_POST['username']) && isset($_POST['pwd'])){
 			?>
 			<div class="form-group">
 				<label for="username">Username:</label>
-				<input type="text" class="form-control input-edit" id="username" name="username" value="Rick" placeholder="Username" required />
+				<input type="text" class="form-control input-edit" id="username" name="username" placeholder="Username" required />
 			</div>
 			<div class="form-group">
 				<label for="pwd">Password:</label>
-				<input type="password" class="form-control input-edit" id="pwd" name="pwd" placeholder="Password" required value="Porra1a9454" />
+				<input type="password" class="form-control input-edit" id="pwd" name="pwd" placeholder="Password" required />
 			</div>
 			<div class="row">
 				<div class="col-md-6">

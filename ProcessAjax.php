@@ -39,25 +39,6 @@ if(isset($_POST['function2call']) && !empty($_POST['function2call'])) {
 
             echo json_encode($success);
             break;
-        case 'get_series_ajax' :
-            $author_id = $_POST['author_id'];
-            if($author_id != null && $author_id > 0)
-            {
-                $seriesData = Common::get_data_by_id('get_series', $author_id);
-            }
-            else
-            {
-                return '';
-            }
-
-            echo json_encode($seriesData);
-            break;
-        case 'get_series_by_id' :
-            $edit_series_id = $_POST['series_id'];
-            $series_edit = Common::get_data_by_id('get_series_by_id', $edit_series_id);
-
-            echo json_encode($series_edit);
-            break;
     }
 }
     function stdToArray($obj){
